@@ -1,0 +1,78 @@
+/* ============================================= */
+/* SKILL PROGRESS BARS — matches portfolio theme  */
+/* Uses the same :root variables already defined  */
+/* in your portfolio.html (--cyan, --magenta etc) */
+/* ============================================= */
+
+.skills-bar-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+
+.skills-bar-grid .skill-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:6px;
+  padding:24px;
+}
+
+.skills-bar-grid .skill-card h3{
+  font-size:15px;
+  color:var(--cyan);
+  letter-spacing:1px;
+  margin-bottom:18px;
+  text-transform:uppercase;
+  font-family:var(--body);
+  font-weight:700;
+}
+
+.skill-item{
+  margin-bottom:16px;
+}
+.skill-item:last-child{
+  margin-bottom:0;
+}
+
+.skill-line{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-family:var(--body);
+  font-size:15px;
+  font-weight:600;
+  color:var(--text);
+  margin-bottom:6px;
+}
+
+.skill-pct{
+  font-family:var(--mono);
+  font-size:13px;
+  color:var(--cyan);
+  text-shadow:0 0 6px rgba(0,247,255,0.5);
+}
+
+.skill-track{
+  width:100%;
+  height:8px;
+  border-radius:4px;
+  background:rgba(255,255,255,0.06);
+  border:1px solid var(--border-soft);
+  overflow:hidden;
+  position:relative;
+}
+
+.skill-fill{
+  height:100%;
+  width:0%;               /* JS animates this to data-percent */
+  border-radius:4px;
+  background:linear-gradient(90deg, var(--cyan), var(--violet) 60%, var(--magenta));
+  box-shadow:0 0 10px rgba(0,247,255,0.5);
+  transition:width 1.1s cubic-bezier(.22,.9,.3,1);
+}
+
+@media(max-width:760px){
+  .skills-bar-grid{
+    grid-template-columns:1fr;
+  }
+}

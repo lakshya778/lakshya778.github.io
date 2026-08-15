@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lakshya Agarwal — Full Stack Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="skills.css">
+<style>
+  :root{
+    --bg:#07050f;
+    --bg-alt:#0b0818;
+    --surface:#100b22;
+    --surface-2:#160f30;
+    --border:rgba(0,247,255,0.18);
+    --border-soft:rgba(255,255,255,0.06);
+    --text:#c9c8e8;
+    --text-dim:#7b7aa3;
+    --text-bright:#f4f3ff;
+    --cyan:#00f7ff;
+    --magenta:#ff2ec4;
+    --violet:#9d4edd;
+    --amber:#ffcf5c;
+    --disp:'Orbitron', sans-serif;
+    --body:'Rajdhani', sans-serif;
+    --mono:'Share Tech Mono', monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(157,78,221,0.25), transparent),
+      radial-gradient(ellipse 60% 40% at 90% 10%, rgba(0,247,255,0.10), transparent),
+      var(--bg);
+    color:var(--text);
+    font-family:var(--body);
+    font-size:18px;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--magenta);color:#07050f;}
+  a{color:inherit;}
+ 
+  /* grid backdrop */
+  .grid-bg{
+    position:fixed;inset:0;z-index:-1;
+    background-image:
+      linear-gradient(rgba(0,247,255,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,247,255,0.05) 1px, transparent 1px);
+    background-size:48px 48px;
+    mask-image:radial-gradient(ellipse 90% 60% at 50% 0%, black 20%, transparent 75%);
+  }
+ 
+  h1,h2,h3{font-family:var(--disp);color:var(--text-bright);letter-spacing:0.5px;}
+ 
+  /* ===== NAV ===== */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(7,5,15,0.75);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--border);
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 6vw;height:64px;
+  }
+  .logo{font-family:var(--disp);font-weight:900;font-size:18px;color:var(--text-bright);letter-spacing:2px;}
+  .logo span{color:var(--cyan);text-shadow:0 0 12px var(--cyan);}
+  .nav-links{display:flex;gap:36px;list-style:none;}
+  .nav-links a{
+    font-family:var(--body);font-weight:600;font-size:15px;
+    text-decoration:none;color:var(--text-dim);letter-spacing:1px;text-transform:uppercase;
+    position:relative;padding:4px 0;transition:color .2s;
+  }
+  .nav-links a::after{
+    content:'';position:absolute;left:0;bottom:0;width:0;height:2px;
+    background:var(--cyan);box-shadow:0 0 8px var(--cyan);transition:width .25s;
+  }
+  .nav-links a:hover{color:var(--text-bright);}
+  .nav-links a:hover::after{width:100%;}
+  @media(max-width:760px){.nav-links{display:none;}}
+ 
+  section{padding:120px 8vw 100px;max-width:1180px;margin:0 auto;}
+ 
+  /* ===== HERO ===== */
+  .hero{
+    min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+    position:relative;padding-top:64px;
+  }
+  .hero-eyebrow{
+    font-family:var(--mono);color:var(--cyan);font-size:14px;letter-spacing:3px;
+    text-transform:uppercase;margin-bottom:18px;
+    text-shadow:0 0 10px rgba(0,247,255,0.6);
+  }
+  .hero h1{
+    font-size:clamp(42px,7vw,88px);line-height:1.02;font-weight:900;
+    margin-bottom:20px;
+  }
+  .glitch-name{
+    background:linear-gradient(90deg, var(--cyan), var(--violet) 45%, var(--magenta));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    filter:drop-shadow(0 0 30px rgba(157,78,221,0.45));
+  }
+  .hero-sub{
+    font-size:22px;color:var(--text);max-width:600px;margin-bottom:36px;font-weight:500;
+  }
+  .hero-sub strong{color:var(--cyan);font-weight:700;}
+  .hero-cta{display:flex;gap:18px;flex-wrap:wrap;}
+  .btn{
+    font-family:var(--body);font-weight:700;font-size:16px;letter-spacing:0.5px;
+    padding:14px 30px;border-radius:2px;text-decoration:none;
+    display:inline-block;transition:transform .18s, box-shadow .25s;
+    text-transform:uppercase;
+  }
+  .btn:hover{transform:translateY(-3px);}
+  .btn-neon{
+    background:transparent;color:var(--cyan);border:1.5px solid var(--cyan);
+    box-shadow:0 0 12px rgba(0,247,255,0.35), inset 0 0 12px rgba(0,247,255,0.05);
+  }
+  .btn-neon:hover{box-shadow:0 0 26px rgba(0,247,255,0.65), inset 0 0 18px rgba(0,247,255,0.15);}
+  .btn-ghost-neon{
+    background:transparent;color:var(--magenta);border:1.5px solid var(--magenta);
+    box-shadow:0 0 12px rgba(255,46,196,0.25);
+  }
+  .btn-ghost-neon:hover{box-shadow:0 0 26px rgba(255,46,196,0.55);}
+ 
+  .hero-scan{
+    position:absolute;right:-4vw;top:50%;transform:translateY(-50%);
+    width:340px;height:340px;border:1px solid var(--border);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    opacity:0.5;
+  }
+  .hero-scan::before{
+    content:'';position:absolute;inset:24px;border:1px solid rgba(255,46,196,0.25);border-radius:50%;
+  }
+  .hero-scan::after{
+    content:'';position:absolute;inset:60px;border:1px dashed rgba(0,247,255,0.3);border-radius:50%;
+    animation:spin 14s linear infinite;
+  }
+  @keyframes spin{to{transform:rotate(360deg);}}
+  @media(max-width:900px){.hero-scan{display:none;}}
+ 
+  /* ===== SECTION HEADS ===== */
+  .sec-head{margin-bottom:50px;}
+  .sec-num{font-family:var(--mono);color:var(--magenta);font-size:14px;letter-spacing:3px;text-shadow:0 0 8px rgba(255,46,196,0.5);}
+  .sec-title{font-size:36px;margin-top:8px;position:relative;display:inline-block;}
+  .sec-title::after{
+    content:'';position:absolute;left:0;bottom:-14px;width:60px;height:3px;
+    background:linear-gradient(90deg, var(--cyan), var(--magenta));
+    box-shadow:0 0 10px var(--cyan);
+  }
+ 
+  /* ===== ABOUT ===== */
+  .about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:start;}
+  .about-grid p{margin-bottom:16px;color:var(--text);font-size:18px;}
+  .about-grid strong{color:var(--cyan);}
+  .neon-panel{
+    background:var(--surface);border:1px solid var(--border);border-radius:6px;
+    padding:26px 28px;position:relative;
+    box-shadow:0 0 0 1px rgba(0,247,255,0.03), 0 20px 50px -20px rgba(0,247,255,0.15);
+  }
+  .neon-panel::before{
+    content:'';position:absolute;top:-1px;left:14px;right:14px;height:1px;
+    background:linear-gradient(90deg, transparent, var(--cyan), transparent);
+  }
+  .panel-label{font-family:var(--mono);color:var(--text-dim);font-size:12px;letter-spacing:2px;margin-bottom:16px;text-transform:uppercase;}
+  .stat-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border-soft);font-family:var(--mono);font-size:14px;}
+  .stat-row:last-child{border-bottom:none;}
+  .stat-row span:first-child{color:var(--text-dim);}
+  .stat-row span:last-child{color:var(--cyan);}
+ 
+  /* ===== SKILLS ===== */
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;}
+  .skill-card{
+    background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:24px;
+    transition:border-color .2s, box-shadow .2s, transform .2s;
+  }
+  .skill-card:hover{
+    border-color:var(--cyan);box-shadow:0 0 22px rgba(0,247,255,0.25);transform:translateY(-4px);
+  }
+  .skill-card h3{font-size:15px;color:var(--cyan);letter-spacing:1px;margin-bottom:14px;text-transform:uppercase;font-family:var(--body);font-weight:700;}
+  .skill-tags{display:flex;flex-wrap:wrap;gap:8px;}
+  .skill-tags span{
+    font-family:var(--mono);font-size:12.5px;color:var(--text);
+    border:1px solid var(--border-soft);padding:5px 10px;border-radius:3px;background:rgba(255,255,255,0.02);
+  }
+ 
+  /* ===== PROJECTS ===== */
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:26px;}
+  .project-card{
+    background:linear-gradient(160deg, var(--surface), var(--surface-2));
+    border:1px solid var(--border);border-radius:8px;padding:28px;
+    display:flex;flex-direction:column;height:100%;position:relative;overflow:hidden;
+    transition:transform .25s, box-shadow .25s, border-color .25s;
+  }
+  .project-card::before{
+    content:'';position:absolute;top:0;left:0;width:100%;height:2px;
+    background:linear-gradient(90deg, var(--cyan), var(--violet), var(--magenta));
+    opacity:0.6;
+  }
+  .project-card:hover{
+    transform:translateY(-6px);
+    border-color:rgba(0,247,255,0.4);
+    box-shadow:0 20px 50px -20px rgba(157,78,221,0.4), 0 0 30px -10px rgba(0,247,255,0.2);
+  }
+  .project-tag{font-family:var(--mono);font-size:12px;color:var(--magenta);letter-spacing:1.5px;margin-bottom:12px;text-transform:uppercase;}
+  .project-card h3{font-size:22px;margin-bottom:12px;}
+  .project-card p{color:var(--text);font-size:15.5px;flex:1;margin-bottom:18px;}
+  .project-stack{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px;}
+  .project-stack span{
+    font-family:var(--mono);font-size:11.5px;color:var(--cyan);
+    background:rgba(0,247,255,0.08);border:1px solid rgba(0,247,255,0.2);
+    padding:3px 9px;border-radius:3px;
+  }
+  .project-links{display:flex;gap:20px;}
+  .project-links a{
+    font-family:var(--body);font-weight:700;font-size:14px;text-decoration:none;color:var(--text-bright);
+    border-bottom:1.5px solid var(--magenta);padding-bottom:2px;transition:color .2s, border-color .2s;
+    text-transform:uppercase;letter-spacing:0.5px;
+  }
+  .project-links a:hover{color:var(--cyan);border-color:var(--cyan);}
+ 
+  /* ===== CONTACT ===== */
+  .contact-wrap{text-align:center;}
+  .contact-wrap .sec-title::after{left:50%;transform:translateX(-50%);}
+  .contact-sub{color:var(--text);font-size:18px;max-width:520px;margin:0 auto 40px;}
+  .contact-links{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;}
+  .contact-links a{
+    font-family:var(--body);font-weight:700;font-size:14px;letter-spacing:0.5px;
+    color:var(--text);border:1px solid var(--border);padding:12px 22px;border-radius:4px;
+    text-decoration:none;transition:all .2s;text-transform:uppercase;
+  }
+  .contact-links a:hover{
+    color:var(--cyan);border-color:var(--cyan);box-shadow:0 0 18px rgba(0,247,255,0.3);
+  }
+ 
+  footer{
+    text-align:center;padding:34px;font-family:var(--mono);font-size:13px;color:var(--text-dim);
+    border-top:1px solid var(--border-soft);
+  }
+  footer span{color:var(--magenta);}
+ 
+  @media(max-width:800px){
+    .about-grid{grid-template-columns:1fr;}
+    section{padding:100px 6vw 70px;}
+    .hero-sub{font-size:19px;}
+  }
+</style>
+</head>
+<body>
+ 
+<div class="grid-bg"></div>
+ 
+<nav>
+  <div class="logo">L<span>A</span>.DEV</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="resume.pdf" class="btn btn-neon" style="padding:9px 20px;font-size:13px;" target="_blank">Resume ↓</a>
+</nav>
+ 
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-eyebrow">// Full Stack Developer</div>
+  <h1>LAKSHYA<br><span class="glitch-name">AGARWAL</span></h1>
+  <p class="hero-sub">B.Tech CSE student building <strong>full-stack web applications</strong> — from React interfaces to Node/Flask backends. Currently in my 5th semester, shipping real projects and sharpening DSA for SDE roles.</p>
+  <div class="hero-cta">
+    <a href="#projects" class="btn btn-neon">View Projects</a>
+    <a href="#contact" class="btn btn-ghost-neon">Get In Touch</a>
+  </div>
+  <div class="hero-scan"></div>
+</section>
+ 
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec-head">
+    <div class="sec-num">01 / IDENTITY</div>
+    <h2 class="sec-title">About</h2>
+  </div>
+  <div class="about-grid">
+    <div>
+      <p>I'm <strong>Lakshya Agarwal</strong>, a full stack developer currently in my 5th semester of B.Tech (Computer Science & Engineering) at KCC Institute of Technology and Management, based in Greater Noida, UP.</p>
+      <p>I like building things end-to-end — <strong>React</strong> on the frontend, <strong>Node.js / Flask</strong> on the backend, and a database that ties it together. My recent projects range from a full MERN marketplace app to an AI-powered chatbot.</p>
+      <p>I've solved <strong>150+ DSA problems</strong> across LeetCode, GeeksforGeeks, and Coding Ninjas, and led a team as <strong>Hackathon Team Leader</strong>. Right now I'm preparing for <strong>SDE roles</strong> — sharpening system design and shipping projects that are actually deployed and usable.</p>
+    </div>
+    <div class="neon-panel">
+      <div class="panel-label">// profile.dat</div>
+      <div class="stat-row"><span>Branch</span><span>CSE</span></div>
+      <div class="stat-row"><span>College</span><span>KCC ITM</span></div>
+      <div class="stat-row"><span>Location</span><span>Greater Noida, UP</span></div>
+      <div class="stat-row"><span>CGPA</span><span>8.1 (2nd Yr)</span></div>
+      <div class="stat-row"><span>DSA Solved</span><span>150+</span></div>
+      <div class="stat-row"><span>Status</span><span>Open to Work</span></div>
+    </div>
+  </div>
+</section>
+ 
+<!-- SKILLS -->
+<section id="skills">
+  <div class="sec-head">
+    <div class="sec-num">02 / ARSENAL</div>
+    <h2 class="sec-title">Skills</h2>
+  </div>
+
+  <div class="skills-bar-grid">
+
+    <div class="skill-card">
+      <h3>Languages</h3>
+      <div class="skill-item">
+        <div class="skill-line"><span>C</span><span class="skill-pct">70%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-percent="70"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-line"><span>C++</span><span class="skill-pct">75%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-percent="75"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-line"><span>Java</span><span class="skill-pct">65%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-percent="65"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-line"><span>Python</span><span class="skill-pct">80%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-percent="80"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-line"><span>JavaScript</span><span class="skill-pct">85%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-percent="85"></div></div>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <h3>Frontend</h3>
+      <div class="skill-item">
+        <div class="skill-line"><span>React</span><span class="skill-pct">80%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-percent="80"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-line"><span>HTML / CSS</span><span class="skill-pct">90%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-percent="90"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-line"><span>Tailwind</span><span class="skill-pct">80%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-percent="80"></div></div>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <h3>Backend</h3>
+      <div class="skill-item">
+        <div class="skill-line"><span>Node.js</span><span class="skill-pct">75%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-percent="75"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-line"><span>Express</span><span class="skill-pct">75%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-percent="75"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-line"><span>Flask</span><span class="skill-pct">65%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-percent="65"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-line"><span>RESTful APIs</span><span class="skill-pct">80%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-percent="80"></div></div>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <h3>Database</h3>
+      <div class="skill-item">
+        <div class="skill-line"><span>MongoDB</span><span class="skill-pct">80%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-percent="80"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-line"><span>MySQL</span><span class="skill-pct">65%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-percent="65"></div></div>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <h3>Tools & Services</h3>
+      <div class="skill-item">
+        <div class="skill-line"><span>Git / GitHub</span><span class="skill-pct">85%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-percent="85"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-line"><span>VS Code</span><span class="skill-pct">90%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-percent="90"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-line"><span>JWT</span><span class="skill-pct">75%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-percent="75"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-line"><span>Cloudinary</span><span class="skill-pct">70%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-percent="70"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-line"><span>Vercel / Render</span><span class="skill-pct">75%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-percent="75"></div></div>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <h3>Core CS</h3>
+      <div class="skill-item">
+        <div class="skill-line"><span>DSA</span><span class="skill-pct">75%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-percent="75"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-line"><span>OOPs</span><span class="skill-pct">80%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-percent="80"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-line"><span>Operating Systems</span><span class="skill-pct">65%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-percent="65"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-line"><span>System Design</span><span class="skill-pct">60%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-percent="60"></div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+ 
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="sec-head">
+    <div class="sec-num">03 / BUILDS</div>
+    <h2 class="sec-title">Projects</h2>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-tag">◆ Full Stack — MERN</div>
+      <h3>Lost & Found</h3>
+      <p>A full-stack MERN app where users post lost/found items with photos, browse & filter listings, claim items, and get notified — plus an admin panel for stats and moderation.</p>
+      <div class="project-stack"><span>React</span><span>Node.js</span><span>Express</span><span>MongoDB</span><span>JWT</span></div>
+      <div class="project-links"><a href="https://lost-and-found-eight-pearl.vercel.app" target="_blank">Live Demo</a><a href="https://github.com/lakshya778/lost-and-found" target="_blank">GitHub</a></div>
+    </div>
+    <div class="project-card">
+      <div class="project-tag">◆ AI / Backend</div>
+      <h3>RelaxBuddy</h3>
+      <p>An empathetic, non-clinical AI chatbot for emotional well-being — calming responses, crisis-keyword detection with helpline suggestions, and a typing-animation chat UI.</p>
+      <div class="project-stack"><span>Flask</span><span>Python</span><span>OpenAI API</span><span>JavaScript</span></div>
+      <div class="project-links"><a href="https://github.com/lakshya778/relax-buddy" target="_blank">GitHub</a></div>
+    </div>
+    <div class="project-card">
+      <div class="project-tag">◆ Frontend / Game Logic</div>
+      <h3>Tic-Tac-Toe</h3>
+      <p>A classic two-player Tic-Tac-Toe game built with core JavaScript logic, DOM manipulation, and win-condition detection.</p>
+      <div class="project-stack"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+      <div class="project-links"><a href="https://github.com/lakshya778/Tic-Tac-Toe" target="_blank">GitHub</a></div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="sec-head">
+    <div class="sec-num">04 / MILESTONES</div>
+    <h2 class="sec-title">Achievements & Leadership</h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <h3>Problem Solving</h3>
+      <p style="color:var(--text);font-size:15px;">Solved 150+ DSA problems across LeetCode, GeeksforGeeks, and Coding Ninjas — Arrays, Stacks, Queues, Linked Lists, Searching & Sorting.</p>
+    </div>
+    <div class="skill-card">
+      <h3>Hackathon Team Leader</h3>
+      <p style="color:var(--text);font-size:15px;">Participated in multiple hackathons as Team Leader, driving project direction and coordination.</p>
+    </div>
+    <div class="skill-card">
+      <h3>Campus Involvement</h3>
+      <p style="color:var(--text);font-size:15px;">Coordinator for college Technical Fest activities, and Volunteer at PYP (People for People) social development organization.</p>
+    </div>
+  </div>
+</section>
+ 
+<!-- CONTACT -->
+<section id="contact" class="contact-wrap">
+  <div class="sec-head">
+    <div class="sec-num">05 / UPLINK</div>
+    <h2 class="sec-title">Contact</h2>
+  </div>
+  <p class="contact-sub">Open to SDE / Full Stack opportunities. Feel free to reach out or check out my code below.</p>
+  <div class="contact-links">
+    <a href="mailto:agarwallakshya778@gmail.com">Email</a>
+    <a href="tel:+919389744079">+91 9389744079</a>
+    <a href="https://github.com/lakshya778" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/lakshya-agarwal-02941732b/" target="_blank">LinkedIn</a>
+    <a href="https://leetcode.com/u/cooder007/" target="_blank">LeetCode</a>
+    <a href="https://www.naukri.com/code360/profile/63f28f53-5437-409f-b2a7-873f97a61b51" target="_blank">Coding Ninjas</a>
+    <a href="https://www.geeksforgeeks.org/profile/agarwallakshya778" target="_blank">GFG</a>
+    <a href="https://www.codechef.com/users/pride_story_82" target="_blank">CodeChef</a>
+  </div>
+</section>
+ 
+<footer>
+  built with <span>&lt;/&gt;</span> by Lakshya Agarwal — © 2026
+</footer>
+ 
+<script src="skills.js"></script>
+</body>
+</html>
