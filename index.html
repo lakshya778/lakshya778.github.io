@@ -11,7 +11,6 @@
 <title>Lakshya Agarwal — Full Stack Developer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="skills.css">
 <style>
   :root{
     --bg:#07050f;
@@ -189,6 +188,17 @@
     border:1px solid var(--border-soft);padding:5px 10px;border-radius:3px;background:rgba(255,255,255,0.02);
   }
  
+  .skill-tags.sub{margin-top:14px;padding-top:14px;border-top:1px solid var(--border-soft);}
+  .skill-card .skill-tags span:hover{border-color:var(--cyan);color:var(--cyan);}
+
+  /* ===== HIGHLIGHTS ===== */
+  .highlights{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-top:56px;}
+  .hl{
+    background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:22px 20px;text-align:center;
+  }
+  .hl b{display:block;font-family:var(--disp);font-size:30px;color:var(--cyan);text-shadow:0 0 12px rgba(0,247,255,0.5);margin-bottom:6px;}
+  .hl span{font-size:14px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;font-weight:600;}
+
   /* ===== PROJECTS ===== */
   .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:26px;}
   .project-card{
@@ -293,14 +303,20 @@
     </div>
     <div class="neon-panel">
       <div class="panel-label">// profile.dat</div>
-      <div class="stat-row"><span>Branch</span><span>CSE</span></div>
+      <div class="stat-row"><span>Degree</span><span>B.Tech CSE</span></div>
       <div class="stat-row"><span>College</span><span>KCC ITM</span></div>
+      <div class="stat-row"><span>Graduating</span><span>2028</span></div>
       <div class="stat-row"><span>Location</span><span>Greater Noida, UP</span></div>
       <div class="stat-row"><span>CGPA</span><span>7.82 (up to Sem 4)</span></div>
-      <div class="stat-row"><span>DSA Solved</span><span>200+</span></div>
-      <div class="stat-row"><span>Projects Deployed</span><span>4</span></div>
+      <div class="stat-row"><span>SGPA</span><span>7.92 (S3) · 8.00 (S4)</span></div>
       <div class="stat-row"><span>Status</span><span>Open to Internship</span></div>
     </div>
+  </div>
+  <div class="highlights">
+    <div class="hl"><b>4</b><span>Full-stack projects deployed</span></div>
+    <div class="hl"><b>200+</b><span>DSA problems solved</span></div>
+    <div class="hl"><b>SIH 2026</b><span>Led a 6-member team</span></div>
+    <div class="hl"><b>2</b><span>AI integrations: Gemini, YOLOv8</span></div>
   </div>
 </section>
  
@@ -311,180 +327,28 @@
     <h2 class="sec-title">Skills</h2>
   </div>
 
-  <div class="skills-bar-grid">
-
+  <div class="skills-grid">
     <div class="skill-card">
-      <h3>Languages</h3>
-      <div class="skill-item">
-        <div class="skill-line"><span>C++</span><span class="skill-pct">75%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-percent="75"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-line"><span>Python</span><span class="skill-pct">70%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-percent="70"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-line"><span>JavaScript</span><span class="skill-pct">85%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-percent="85"></div></div>
-      </div>
+      <h3>Languages &amp; Core CS</h3>
+      <div class="skill-tags"><span>JavaScript</span><span>C++</span><span>Python</span></div>
+      <div class="skill-tags sub"><span>DSA</span><span>DBMS</span><span>OOP</span><span>Operating Systems</span></div>
     </div>
-
     <div class="skill-card">
       <h3>Frontend</h3>
-      <div class="skill-item">
-        <div class="skill-line"><span>React</span><span class="skill-pct">80%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-percent="80"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-line"><span>HTML / CSS</span><span class="skill-pct">90%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-percent="90"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-line"><span>Tailwind</span><span class="skill-pct">80%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-percent="80"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-line"><span>Vite</span><span class="skill-pct">75%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-percent="75"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-line"><span>React Router</span><span class="skill-pct">75%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-percent="75"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-line"><span>Recharts</span><span class="skill-pct">70%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-percent="70"></div></div>
-      </div>
+      <div class="skill-tags"><span>React.js</span><span>HTML5</span><span>CSS3</span><span>Tailwind CSS</span></div>
     </div>
-
     <div class="skill-card">
-      <h3>Backend</h3>
-      <div class="skill-item">
-        <div class="skill-line"><span>Node.js</span><span class="skill-pct">75%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-percent="75"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-line"><span>Express</span><span class="skill-pct">75%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-percent="75"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-line"><span>Flask</span><span class="skill-pct">65%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-percent="65"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-line"><span>RESTful APIs</span><span class="skill-pct">80%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-percent="80"></div></div>
-      </div>
+      <h3>Backend &amp; Databases</h3>
+      <div class="skill-tags"><span>Node.js</span><span>Express.js</span><span>REST APIs</span><span>JWT Auth</span><span>MongoDB</span><span>MySQL</span></div>
     </div>
-
     <div class="skill-card">
-      <h3>AI / ML</h3>
-      <div class="skill-item">
-        <div class="skill-line"><span>Google Gemini API</span><span class="skill-pct">75%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-percent="75"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-line"><span>YOLOv8</span><span class="skill-pct">65%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-percent="65"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-line"><span>spaCy</span><span class="skill-pct">65%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-percent="65"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-line"><span>scikit-learn</span><span class="skill-pct">60%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-percent="60"></div></div>
-      </div>
+      <h3>AI / Blockchain</h3>
+      <div class="skill-tags"><span>Google Gemini API</span><span>YOLOv8</span><span>Solidity</span></div>
     </div>
-
     <div class="skill-card">
-      <h3>Blockchain</h3>
-      <div class="skill-item">
-        <div class="skill-line"><span>Solidity</span><span class="skill-pct">60%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-percent="60"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-line"><span>Hardhat</span><span class="skill-pct">60%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-percent="60"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-line"><span>Ethers.js</span><span class="skill-pct">55%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-percent="55"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-line"><span>Polygon Testnet</span><span class="skill-pct">55%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-percent="55"></div></div>
-      </div>
+      <h3>Tools &amp; Deployment</h3>
+      <div class="skill-tags"><span>Git</span><span>GitHub</span><span>Postman</span><span>Vercel</span><span>Render</span><span>Cloudinary</span></div>
     </div>
-
-    <div class="skill-card">
-      <h3>Database</h3>
-      <div class="skill-item">
-        <div class="skill-line"><span>MongoDB</span><span class="skill-pct">80%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-percent="80"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-line"><span>MySQL</span><span class="skill-pct">65%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-percent="65"></div></div>
-      </div>
-    </div>
-
-    <div class="skill-card">
-      <h3>Tools & Services</h3>
-      <div class="skill-item">
-        <div class="skill-line"><span>Git / GitHub</span><span class="skill-pct">85%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-percent="85"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-line"><span>VS Code</span><span class="skill-pct">90%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-percent="90"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-line"><span>JWT</span><span class="skill-pct">75%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-percent="75"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-line"><span>Cloudinary</span><span class="skill-pct">70%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-percent="70"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-line"><span>Postman</span><span class="skill-pct">80%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-percent="80"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-line"><span>Vercel / Render</span><span class="skill-pct">75%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-percent="75"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-line"><span>Web Speech API</span><span class="skill-pct">65%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-percent="65"></div></div>
-      </div>
-    </div>
-
-    <div class="skill-card">
-      <h3>Core CS</h3>
-      <div class="skill-item">
-        <div class="skill-line"><span>DSA</span><span class="skill-pct">75%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-percent="75"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-line"><span>OOPs</span><span class="skill-pct">60%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-percent="60"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-line"><span>Operating Systems</span><span class="skill-pct">65%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-percent="65"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-line"><span>DBMS</span><span class="skill-pct">60%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-percent="60"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-line"><span>System Design</span><span class="skill-pct">60%</span></div>
-        <div class="skill-track"><div class="skill-fill" data-percent="60"></div></div>
-      </div>
-    </div>
-
   </div>
 </section>
  
@@ -571,6 +435,5 @@
   built with <span>&lt;/&gt;</span> by Lakshya Agarwal — © 2026
 </footer>
  
-<script src="skills.js"></script>
 </body>
 </html>
